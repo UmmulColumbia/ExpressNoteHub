@@ -34,6 +34,16 @@ GET *: Returns the index.html file for any other routes accessed.
 Bonus Feature
 Delete Functionality
 DELETE /api/notes/:id: Removes a note with the specified ID from db.json.
+
+## Screenshot
+![image](https://github.com/UmmulColumbia/ExpressNoteHub/assets/156148729/99d87a33-4eab-406e-97c5-8a6672f5e99d)
+![image](https://github.com/UmmulColumbia/ExpressNoteHub/assets/156148729/b84640bd-013b-4c0c-b0c4-c06e47ec0a73)
+![image](https://github.com/UmmulColumbia/ExpressNoteHub/assets/156148729/8cbf6ad4-3783-4353-b6f5-f5ede9caa410)
+![image](https://github.com/UmmulColumbia/ExpressNoteHub/assets/156148729/b14d6d3f-e2a5-4361-b838-cd835c122901) (deleted title and text successfully)
+
+
+
+
 ## Deployment
 The application will be deployed to Render, providing easy access to users for managing their notes.
 #### Enjoy organizing your thoughts and tasks. Happy note-taking!
