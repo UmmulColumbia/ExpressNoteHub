@@ -5,9 +5,10 @@ The Note Taker application is designed to support small business owners and prof
 
 ## Features
 - Landing Page: A welcoming page that leads to the notes page.
-- Notes Page: A functional page for viewing existing notes and adding    new ones.
+- Notes Page: A functional page for viewing existing notes and adding new ones.
 - Note Saving: Users can save their notes with a title and body text.
 - Note Retrieval: Users can view their list of saved notes.
+- Note Delete: Existing note can be deleted from saved note list.
 - Dynamic Updates: The UI updates to show new or selected notes without  page reloads.
 ## Getting Started
 Prerequisites
