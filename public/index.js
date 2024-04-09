@@ -80,7 +80,8 @@ const handleNoteSave = () => {
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
-  });
+    console.log("error");
+  }).catch(error => console.error('Error saving note:', error));
 };
 
 // Delete the clicked note
@@ -115,17 +116,18 @@ const handleNewNoteView = (e) => {
   renderActiveNote();
 };
 
-// Renders the appropriate buttons based on the state of the form
 const handleRenderBtns = () => {
+  // Always show the clear button if the user is typing (optional, based on UX design)
   show(clearBtn);
-  if (!noteTitle.value.trim() && !noteText.value.trim()) {
-    hide(clearBtn);
-  } else if (!noteTitle.value.trim() || !noteText.value.trim()) {
-    hide(saveNoteBtn);
-  } else {
+
+  // Show the save button if either the title or the text area has some text
+  if (noteTitle.value.trim() || noteText.value.trim()) {
     show(saveNoteBtn);
+  } else {
+    hide(saveNoteBtn);
   }
 };
+
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
