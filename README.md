@@ -24,9 +24,7 @@ npm (Node Package Manager)
 - npm start or node server.js
 - Open your browser and go to  http://localhost:3001 (example host) to view the application.
 ## Backend Setup
-- db.json
-- Serves as a simple database to store and retrieve notes.
-- Located at the root of the project, within the db folder.
+- db.json. Serves as a simple database to store and retrieve notes. Located at the root of the project, within the db folder.
 - API Routes
 - GET /api/notes: Retrieves all notes from db.json.
 - POST /api/notes: Adds a new note to db.json and returns the added note.
