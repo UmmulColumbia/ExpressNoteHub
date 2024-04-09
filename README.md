@@ -1,7 +1,7 @@
 # ExpressNoteHub
 
 ## Description
-The Note Taker application is designed to support small business owners and professionals in managing their daily tasks and organizing their thoughts effectively. Built with an Express.js backend, this application allows users to write, save, and retrieve notes, facilitating better task management and productivity. The front end of the application has been provided, and the task involves developing the backend functionality to create a full-fledged note-taking tool. Additionally, the application will be deployed to Render for easy access and use.
+The Note Taker application is designed to support small business owners and professionals in managing their daily tasks and organizing their thoughts effectively. Built with an Express.js backend, this application allows users to write, save, retrieve and delete saved notes, facilitating better task management and productivity. The front end of the application has been provided, and the task involves developing the backend functionality to create a full-fledged note-taking tool. Additionally, the application is being deployed to Render for easy access and use.
 
 ## Features
 - Landing Page: A welcoming page that leads to the notes page.
@@ -18,9 +18,10 @@ npm (Node Package Manager)
 Clone the repository to your local machine.
 
 Navigate to the project directory and install dependencies with npm:
+npm init -Y
 npm install
 To start the server, run:
-npm start
+npm start or node server.js
 Open your browser and go to  http://localhost:3001 (example host) to view the application.
 ## Backend Setup
 db.json
@@ -32,7 +33,6 @@ POST /api/notes: Adds a new note to db.json and returns the added note.
 HTML Routes
 GET /notes: Returns the notes.html file.
 GET *: Returns the index.html file for any other routes accessed.
-Bonus Feature
 Delete Functionality
 DELETE /api/notes/:id: Removes a note with the specified ID from db.json.
 
