@@ -15,26 +15,25 @@ Prerequisites
 Node.js
 npm (Node Package Manager)
 ## Installation
-Clone the repository to your local machine.
+- Clone the repository to your local machine.
 
-Navigate to the project directory and install dependencies with npm:
-npm init -Y
-npm install
-To start the server, run:
-npm start or node server.js
-Open your browser and go to  http://localhost:3001 (example host) to view the application.
+- Navigate to the project directory and install dependencies with npm:
+- npm init -Y
+- npm install
+- To start the server, run:
+- npm start or node server.js
+- Open your browser and go to  http://localhost:3001 (example host) to view the application.
 ## Backend Setup
-db.json
-Serves as a simple database to store and retrieve notes.
-Located at the root of the project, within the db folder.
-API Routes
-GET /api/notes: Retrieves all notes from db.json.
-POST /api/notes: Adds a new note to db.json and returns the added note.
-HTML Routes
-GET /notes: Returns the notes.html file.
-GET *: Returns the index.html file for any other routes accessed.
-Delete Functionality
-DELETE /api/notes/:id: Removes a note with the specified ID from db.json.
+- db.json
+- Serves as a simple database to store and retrieve notes.
+- Located at the root of the project, within the db folder.
+- API Routes
+- GET /api/notes: Retrieves all notes from db.json.
+- POST /api/notes: Adds a new note to db.json and returns the added note.
+- HTML Routes
+- GET /notes: Returns the notes.html file.
+- GET *: Returns the index.html file for any other routes accessed.
+- DELETE /api/notes/:id: Removes a note with the specified ID from db.json.
 
 ## Screenshot
 ![image](https://github.com/UmmulColumbia/ExpressNoteHub/assets/156148729/99d87a33-4eab-406e-97c5-8a6672f5e99d)
