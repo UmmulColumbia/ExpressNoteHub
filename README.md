@@ -20,7 +20,7 @@ Navigate to the project directory and install dependencies with npm:
 npm install
 To start the server, run:
 npm start
-Open your browser and go to http://localhost:3001 to view the application.
+Open your browser and go to  http://localhost:3001 (example host) to view the application.
 ## Backend Setup
 db.json
 Serves as a simple database to store and retrieve notes.
