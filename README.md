@@ -39,7 +39,8 @@ npm (Node Package Manager)
 ![image](https://github.com/UmmulColumbia/ExpressNoteHub/assets/156148729/8cbf6ad4-3783-4353-b6f5-f5ede9caa410)
 ![image](https://github.com/UmmulColumbia/ExpressNoteHub/assets/156148729/b14d6d3f-e2a5-4361-b838-cd835c122901) (deleted title and text successfully)
 
-
+Video walkthrough:
+https://drive.google.com/file/d/1qzYU3Y4KAqqqKjlKNGagvNgF3-oxhCRY/view
 
 
 ## Deployment
