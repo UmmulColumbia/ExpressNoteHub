@@ -1,109 +1,67 @@
 const express = require('express');
 const fs = require('fs');
-const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 3007;
 
-// Middleware to handle urlencoded data and json
+// Middleware to parse URL-encoded data and JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// Serve static files from the public directory
+
+// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Middleware to log API requests
+// Middleware to log API requests for debugging
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} request to ${req.url}`);
   next();
 });
 
-// Route to serve the notes.html file
-//app.get('public/notes', (req, res) => {
- // res.sendFile(path.join(__dirname, '/public/notes.html'));
-  //console.log("Served notes.html");
-//});
-
-
-//testing
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'notes.html'));
-    console.log("Served notes.html");
-});
-
-
-
-
-
-
-
-
-
-// API route to get all saved notes
-app.get('/api/notes', (req, res) => {
-  fs.readFile('./db/db.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error("Error reading db.json:", err.message);
-      return res.status(500).json({ error: "Failed to read notes data." });
-    }
-    console.log("Successfully read from db.json");
-    res.json(JSON.parse(data));
-  });
-});
-
-// API route to add a new note
+// POST route to add a new note
 app.post('/api/notes', (req, res) => {
- // const newNote = { ...req.body, id: uuidv4() };
- const newNote = { title, text, id: uuidv4() };
-  console.log("Attempting to save new note:", newNote);
+  // Extract title and text from the request body
+  const { title, text } = req.body;
+  
+  // Check if both title and text are provided
+  if (!title || !text) {
+    return res.status(400).json({ error: "Title and text are required." });
+  }
 
+  // Create a new note with a unique ID
+  const newNote = { title, text, id: uuidv4() };
+
+  // Read the existing notes from 'db.json'
   fs.readFile('./db/db.json', 'utf8', (err, data) => {
     if (err) {
       console.error("Error reading db.json for write:", err.message);
       return res.status(500).json({ error: "Failed to add new note." });
     }
+
+    // Parse the existing notes
     const notes = JSON.parse(data);
+    // Add the new note to the array
     notes.push(newNote);
 
-    fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
+    // Write the updated notes array back to 'db.json'
+    fs.writeFile('./db/db.json', JSON.stringify(notes, null, 2), (err) => {
       if (err) {
         console.error("Failed to write to db.json:", err.message);
         return res.status(500).json({ error: "Failed to save the note." });
       }
       console.log("Note saved successfully:", newNote.id);
+      // Respond with the newly created note object
       res.json(newNote);
     });
   });
 });
 
-// Bonus: API route to delete a note
-app.delete('/api/notes/:id', (req, res) => {
-  const noteId = req.params.id;
-  console.log(`Attempting to delete note with ID: ${noteId}`);
-
-  fs.readFile('./db/db.json', 'utf8', (err, data) => {
-    if (err) {
-      console.error("Error reading db.json for delete:", err.message);
-      return res.status(500).json({ error: "Failed to delete note." });
-    }
-    let notes = JSON.parse(data);
-    notes = notes.filter(note => note.id !== noteId);
-
-    fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
-      if (err) {
-        console.error("Failed to write to db.json after delete:", err.message);
-        return res.status(500).json({ error: "Failed to update notes after deletion." });
-      }
-      console.log(`Note with ID ${noteId} deleted successfully.`);
-      res.json({ message: "Note deleted successfully" });
-    });
-  });
-});
-
-// Route to serve the index.html file for any other endpoint
+// Route to serve the index.html for any other endpoint
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
-  console.log("Served index.html");
 });
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});

@@ -80,7 +80,6 @@ const handleNoteSave = () => {
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
-    console.log("error");
   }).catch(error => console.error('Error saving note:', error));
 };
 
@@ -194,5 +193,3 @@ if (window.location.pathname === '/notes') {
 }
 
 getAndRenderNotes();
-
-
